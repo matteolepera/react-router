@@ -45,10 +45,10 @@ export default function Header() {
                         </ul>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link" href="/login">Account</a>
+                                <NavLink className="nav-link" to={"/login"}><i className="bi bi-person-fill"></i></NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/login">carrello</a>
+                                <NavLink className="nav-link" to={"/cart"}><i className="bi bi-cart-fill"></i></NavLink>
                             </li>
                         </ul>
                     </div>
