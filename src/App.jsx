@@ -1,13 +1,21 @@
 import { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import DefaultLayout from './layout/DefaultLayout'
+import Home from './pages/Home'
 import './App.css'
+
 
 function App() {
 
   return (
     <>
-      <div className="container">
-        <h1>test</h1>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path='/' element={<Home />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
