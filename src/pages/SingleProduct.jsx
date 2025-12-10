@@ -15,10 +15,12 @@ export default function SingleProduct() {
     function fetchProduct() {
         setLoading(true);
         axios.get(`https://fakestoreapi.com/products/${id}`).then((resp) => {
+            const data = resp.data;
+            const isEmpity = Object.keys(data).length === 0;
+            if (isEmpity) {
+                navigate("/");
+            }
             setProduct(resp.data);
-        }).catch((err) => {
-            console.log(err);
-            navigate("/prodotti")
         }).finally(() => {
             setLoading(false);
         })
@@ -36,9 +38,6 @@ export default function SingleProduct() {
     return (
 
         <div className="container p-3">
-            {!product && (
-                <h2 className="text-white">Nessun prodotto è stato trovato.</h2>
-            )}
             {product && (
                 <div className="product-banner">
                     <div className="product-top">
