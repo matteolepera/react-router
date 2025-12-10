@@ -27,6 +27,16 @@ export default function SingleProduct() {
         })
     }
 
+    function nextProduct() {
+        navigate(`/prodotti/${parseInt(id) + 1}`)
+    }
+    function prevProduct() {
+        const currentId = parseInt(id);
+        if (currentId > 1) {
+            navigate(`/prodotti/${parseInt(id) - 1}`)
+        }
+    }
+
     if (loading) {
         return (
             <div className="container p-3">
@@ -55,6 +65,8 @@ export default function SingleProduct() {
                                 </div>
                             </div>
                         </div>
+                        <a onClick={prevProduct} className='btn btn-dark mx-3' href="">Prodotto precedente</a>
+                        <a onClick={nextProduct} className='btn btn-dark mx-3' href="">Prodotto successivo</a>
                     </div>
                 </>
             )}
