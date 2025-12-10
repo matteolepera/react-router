@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 export default function SingleProduct() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchProduct();
@@ -13,11 +14,16 @@ export default function SingleProduct() {
     function fetchProduct() {
         axios.get(`https://fakestoreapi.com/products/${id}`).then((resp) => {
             setProduct(resp.data);
+        }).catch((err) => {
+            setProduct(null);
         })
     }
     return (
 
         <div className="container p-3">
+            {product === null && (
+                <h2 className="text-white">Nessun prodotto è stato trovato.</h2>
+            )}
             {product !== null && (
                 <div className="product-banner">
                     <div className="product-top">
