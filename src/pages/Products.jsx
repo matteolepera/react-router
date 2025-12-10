@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Card from "../components/Card";
 
 
 export default function Products() {
@@ -23,14 +23,11 @@ export default function Products() {
 
                 {products.map((product) =>
                     <div key={product.id} className="col-12 col-sm-6 col-lg-3 text-center">
-                        <div className="card text-bg-dark h-100">
-                            <img src={product.image} className="card-img-top" alt={product.title} />
-                            <div className="card-body">
-                                <h5 className="card-title">{product.title}</h5>
-                                <p>{product.price}&euro;</p>
-                                <Link className="btn btn-danger" to={`/prodotti/${product.id}`}>Vedi dettagli</Link>
-                            </div>
-                        </div>
+                        <Card
+                            title={product.title}
+                            image={product.image}
+                            price={product.price}
+                            id={product.id} />
                     </div>
                 )}
 
