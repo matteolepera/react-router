@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function Products() {
@@ -27,6 +28,7 @@ export default function Products() {
                             <div className="card-body">
                                 <h5 className="card-title">{product.title}</h5>
                                 <p>{product.price}&euro;</p>
+                                <Link className="btn btn-danger" to={`/prodotti/${product.id}`}>Vedi dettagli</Link>
                             </div>
                         </div>
                     </div>
