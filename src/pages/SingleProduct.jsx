@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+import BackButton from "../components/BackButton";
 
 export default function SingleProduct() {
     const { id } = useParams();
@@ -39,20 +40,23 @@ export default function SingleProduct() {
 
         <div className="container p-3">
             {product && (
-                <div className="product-banner">
-                    <div className="product-top">
-                        <h2 className="text-white">{product.title}</h2>
-                        <div className="product-body d-flex text-white">
-                            <img src={product.image} alt={product.title} />
-                            <div className="product-info p-3">
-                                <h4>Descrizione:</h4>
-                                <p>{product.description}</p>
-                                <h4>A soli {product.price}&euro;</h4>
-                                <a className='btn btn-dark' href="">Aggiungi al carrello</a>
+                <>
+                    <BackButton title={"Torna ai prodotti"} />
+                    <div className="product-banner">
+                        <div className="product-top">
+                            <h2 className="text-white mt-5">{product.title}</h2>
+                            <div className="product-body d-flex text-white">
+                                <img src={product.image} alt={product.title} />
+                                <div className="product-info p-3">
+                                    <h4>Descrizione:</h4>
+                                    <p>{product.description}</p>
+                                    <h4>A soli {product.price}&euro;</h4>
+                                    <a className='btn btn-dark' href="">Aggiungi al carrello</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </>
             )}
         </div>
     )
