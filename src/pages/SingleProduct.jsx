@@ -6,25 +6,40 @@ export default function SingleProduct() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         fetchProduct();
     }, [id])
 
     function fetchProduct() {
+        setLoading(true);
         axios.get(`https://fakestoreapi.com/products/${id}`).then((resp) => {
             setProduct(resp.data);
         }).catch((err) => {
-            setProduct(null);
+            console.log(err);
+            navigate("/prodotti")
+        }).finally(() => {
+            setLoading(false);
         })
+    }
+
+    if (loading) {
+        return (
+            <div className="container p-3">
+                <div className="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div className="progress-bar progress-bar-striped bg-danger">Il tuo prodotto sta caricando...</div>
+                </div>
+            </div>
+        )
     }
     return (
 
         <div className="container p-3">
-            {product === null && (
+            {!product && (
                 <h2 className="text-white">Nessun prodotto è stato trovato.</h2>
             )}
-            {product !== null && (
+            {product && (
                 <div className="product-banner">
                     <div className="product-top">
                         <h2 className="text-white">{product.title}</h2>

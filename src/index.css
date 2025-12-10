@@ -53,3 +53,7 @@ body {
     z-index: 222;
     text-align: center;
 }
+
+.progress-bar {
+    width: 65%;
+}
