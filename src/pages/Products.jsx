@@ -17,13 +17,13 @@ export default function Products() {
             })
     }
     return (
-        <div className="container">
-            <h2>Prodotti</h2>
+        <div className="container p-3">
+            <h2 className="text-white">Prodotti</h2>
             <div className="row p-3 g-4">
 
                 {products.map((product) =>
-                    <div key={product.id} className="col-12 col-sm-6 col-lg-3">
-                        <div className="card h-100">
+                    <div key={product.id} className="col-12 col-sm-6 col-lg-3 text-center">
+                        <div className="card text-bg-dark h-100">
                             <img src={product.image} className="card-img-top" alt={product.title} />
                             <div className="card-body">
                                 <h5 className="card-title">{product.title}</h5>

@@ -8,12 +8,20 @@ img {
     max-width: 100%;
 }
 
+body {
+    background-color: #D7263D;
+}
+
+.text-white {
+    color: #ECECEC;
+}
+
 .navbar-nav .nav-link.active {
     color: #D7263D;
 }
 
 .card-img-top {
-    height: 250px;
+    height: 200px;
     object-fit: contain;
 }
 

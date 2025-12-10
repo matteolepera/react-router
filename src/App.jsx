@@ -20,8 +20,10 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route path='/' element={<Home />} />
-            <Route path='/prodotti' element={<Products />} />
-            <Route path='/prodotti/:id' element={<SingleProduct />} />
+            <Route path='/prodotti'>
+              <Route path='' element={<Products />} />
+              <Route path=':id' element={<SingleProduct />} />
+            </Route>
             <Route path='/contatti' element={<Contacts />} />
             <Route path='/chi-siamo' element={<About />} />
             <Route path='/login' element={<Login />} />
